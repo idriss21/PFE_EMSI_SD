@@ -3,10 +3,21 @@ package org.sid.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Entity
+@Document
 public class Societe implements Serializable{
-	
-	private String code;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long code;
 	private String nom;
 	private String adresse;
 	
@@ -19,7 +30,7 @@ public class Societe implements Serializable{
 	}
 
 
-	public Societe(String code, String nom, String adresse) {
+	public Societe(Long code, String nom, String adresse) {
 		super();
 		this.code = code;
 		this.nom = nom;
@@ -27,12 +38,12 @@ public class Societe implements Serializable{
 	}
 
 
-	public String getCode() {
+	public Long getCode() {
 		return code;
 	}
 
 
-	public void setCode(String code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 
@@ -57,14 +68,7 @@ public class Societe implements Serializable{
 	}
 
 
-	public Societe(String code, String nom, String adresse, Collection<Ordre> ordres) {
-		super();
-		this.code = code;
-		this.nom = nom;
-		this.adresse = adresse;
-		this.ordres = ordres;
-	}
-
+	
 
 	public Collection<Ordre> getOrdres() {
 		return ordres;
