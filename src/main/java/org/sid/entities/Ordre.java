@@ -3,38 +3,53 @@ package org.sid.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING,length=5)
 public abstract class Ordre implements Serializable{
 	
-	
+	@Id
+	@GeneratedValue
 	private Long num;
-	private Date date;
+	//private Date date;
 	private int nombreAction;
-	private double prixAction;
+	private int quantite;
+	private double cours;
+	@ManyToOne
+	@JoinColumn(name="CODE_STE")
 	private Societe societe;
 	
 	
-	public Ordre(Date date, int nombreAction, double prixAction, Societe societe) {
-		super();
-		this.date = date;
-		this.nombreAction = nombreAction;
-		this.prixAction = prixAction;
-		this.societe = societe;
-	}
-
-
-	public Ordre(Date date, int nombreAction, double prixAction) {
-		super();
-		this.date = date;
-		this.nombreAction = nombreAction;
-		this.prixAction = prixAction;
-	}
-
-
 	public Ordre() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public Ordre(int nombreAction, int quantite, double cours) {
+		super();
+		this.nombreAction = nombreAction;
+		this.quantite = quantite;
+		this.cours = cours;
+	}
+
+
+	public Ordre(int nombreAction, int quantite, double cours, Societe societe) {
+		super();
+		this.nombreAction = nombreAction;
+		this.quantite = quantite;
+		this.cours = cours;
+		this.societe = societe;
 	}
 
 
@@ -48,16 +63,6 @@ public abstract class Ordre implements Serializable{
 	}
 
 
-	public Date getDate() {
-		return date;
-	}
-
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-
 	public int getNombreAction() {
 		return nombreAction;
 	}
@@ -68,13 +73,23 @@ public abstract class Ordre implements Serializable{
 	}
 
 
-	public double getPrixAction() {
-		return prixAction;
+	public int getQuantite() {
+		return quantite;
 	}
 
 
-	public void setPrixAction(double prixAction) {
-		this.prixAction = prixAction;
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+
+	public double getCours() {
+		return cours;
+	}
+
+
+	public void setCours(double cours) {
+		this.cours = cours;
 	}
 
 
@@ -86,7 +101,4 @@ public abstract class Ordre implements Serializable{
 	public void setSociete(Societe societe) {
 		this.societe = societe;
 	}
-	
-	
-
 }
