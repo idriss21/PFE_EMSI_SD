@@ -3,13 +3,18 @@ package org.sid.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Societe implements Serializable{
-	
+	@Id
 	private String code;
 	private String nom;
 	private String adresse;
-	
+	@OneToMany(mappedBy="societe",fetch=FetchType.LAZY)
 	private Collection<Ordre> ordres;
 	
 	
