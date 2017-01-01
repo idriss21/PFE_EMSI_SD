@@ -7,8 +7,6 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
-import ma.emsi.Jee.JpaRepository.produitRepository;
-
 public class Application {
 	
 	public static void main(String[] args) {

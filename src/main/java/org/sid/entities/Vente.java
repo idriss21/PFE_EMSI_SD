@@ -2,7 +2,11 @@ package org.sid.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("Vente")
 public class Vente extends Ordre{
 
 	public Vente() {
@@ -10,14 +14,17 @@ public class Vente extends Ordre{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vente(Date date, int nombreAction, double prixAction) {
-		super(date, nombreAction, prixAction);
+	public Vente(int nombreAction, int quantite, double cours, Societe societe) {
+		super(nombreAction, quantite, cours, societe);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vente(Date date, int nombreAction, double prixAction, Societe societe) {
-		super(date, nombreAction, prixAction, societe);
+	public Vente(int nombreAction, int quantite, double cours) {
+		super(nombreAction, quantite, cours);
 		// TODO Auto-generated constructor stub
 	}
+
+	
 
 }
+

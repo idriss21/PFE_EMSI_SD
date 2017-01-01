@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +19,19 @@ public class Societe implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long code;
+=======
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Societe implements Serializable{
+	@Id
+	private String code;
+>>>>>>> 0af2fd25ca9c18b05bc05df8498bd97e7f246dd9
 	private String nom;
 	private String adresse;
-	
+	@OneToMany(mappedBy="societe",fetch=FetchType.LAZY)
 	private Collection<Ordre> ordres;
 	
 	
