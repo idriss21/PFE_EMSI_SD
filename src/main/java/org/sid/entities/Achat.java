@@ -1,5 +1,6 @@
 package org.sid.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -7,7 +8,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Achat")
-public class Achat extends Ordre{
+public class Achat extends Ordre implements Serializable{
 
 	public Achat() {
 		super();

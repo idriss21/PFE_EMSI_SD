@@ -4,31 +4,18 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Entity
-@Document
-public class Societe implements Serializable{
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long code;
-=======
-import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 public class Societe implements Serializable{
 	@Id
 	private String code;
->>>>>>> 0af2fd25ca9c18b05bc05df8498bd97e7f246dd9
+
 	private String nom;
 	private String adresse;
 	@OneToMany(mappedBy="societe",fetch=FetchType.LAZY)
@@ -41,7 +28,7 @@ public class Societe implements Serializable{
 	}
 
 
-	public Societe(Long code, String nom, String adresse) {
+	public Societe(String code, String nom, String adresse) {
 		super();
 		this.code = code;
 		this.nom = nom;
@@ -49,12 +36,15 @@ public class Societe implements Serializable{
 	}
 
 
-	public Long getCode() {
+
+
+
+	public String getCode() {
 		return code;
 	}
 
 
-	public void setCode(Long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

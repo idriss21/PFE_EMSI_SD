@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="template1">
+<head>
+<meta charset="utf-8"/>
+<title>Votre Banque</title>
+</head>
+<body>
+  <div layout:fragment="content">
+		  
+		  	 <div class="panel panel-primary" th:if="${sos}">
+		                <div class="panel-heading">Consultation d'un compte</div>
+		                  <div class="panel-body">
+		                Code : <input type="text" name="code" th:value="${sos.code}"  /> <br/>
+		             		 nom : <input type="text" name="nom" th:value="${sos.nom}"  /> <br/>
+		               			 adresse : <input type="text" name="adresse"  th:value="${sos.adresse}"  />
+		                </div>
+		    </div>
+		               
+  </div>
+  
+ </body>
+ </html>

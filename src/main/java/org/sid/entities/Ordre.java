@@ -25,6 +25,7 @@ public abstract class Ordre implements Serializable{
 	private int nombreAction;
 	private int quantite;
 	private double cours;
+	private Date dateOrdre;
 	@ManyToOne
 	@JoinColumn(name="CODE_STE")
 	private Societe societe;
@@ -95,6 +96,17 @@ public abstract class Ordre implements Serializable{
 
 	public Societe getSociete() {
 		return societe;
+	}
+
+
+	
+	public Date getDateOrdre() {
+		return dateOrdre;
+	}
+
+
+	public void setDateOrdre(Date dateOrdre) {
+		this.dateOrdre = dateOrdre;
 	}
 
 

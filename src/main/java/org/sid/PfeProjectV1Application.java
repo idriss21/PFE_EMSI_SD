@@ -14,41 +14,53 @@ import org.sid.entities.Achat;
 import org.sid.entities.Ordre;
 import org.sid.entities.Societe;
 import org.sid.entities.Vente;
+import org.sid.metier.ISocieteMetier;
+import org.sid.metier.SocieteMetierImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-<<<<<<< HEAD
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
-=======
->>>>>>> 0af2fd25ca9c18b05bc05df8498bd97e7f246dd9
+
+
 
 @SpringBootApplication
-public class PfeProjectV1Application {
+public class PfeProjectV1Application  implements CommandLineRunner {
 
-	private static OrdreRepository ordreRepository;
 	
-	public static void main(String[] args) {
-<<<<<<< HEAD
-		ApplicationContext context =   SpringApplication.run(PfeProjectV1Application.class, args);
-		MongoClient client = (MongoClient) context.getBean("mongoClient");
-		DB db = client.getDB("SDRDF_DB");
-		db.createCollection("tab1", new BasicDBObject());
-		/*DBCollection collection = db.getCollection("tab1");
-		collection.insert(new BasicDBObject().append("title", "Systeme distribué de recolte des données bourciere"));*/
-=======
+	@Autowired
+	private  OrdreRepository ordreRepository;
+	
+	
+	@Autowired
+	private  SocieteRepository societeRepository;
+	
+	@Autowired 
+	private  ISocieteMetier SocieteMetier;
+	
+	
+	
+
+	
+	public  static  void main(String[] args) {
+
 		ApplicationContext context = SpringApplication.run(PfeProjectV1Application.class, args);
 
-		SocieteRepository societeRepository = context.getBean(SocieteRepository.class);
 		
-		ordreRepository=context.getBean(OrdreRepository.class);
+	}
 
+
+
+
+
+	@Override
+	public void run(String... arg0) throws Exception {
+		
+		
 		
 
-		try {
+	/*	try {
 			Document doc = Jsoup
 					.connect(
 							"https://www.wafabourse.com/marches/actions/r;jsessionid=7C344089A451D157D9277E17DE3A95D5.2344FEAD2404B9EB24")
@@ -170,7 +182,9 @@ public class PfeProjectV1Application {
 			e.printStackTrace();
 
 		}
->>>>>>> 0af2fd25ca9c18b05bc05df8498bd97e7f246dd9
+		
+		*/
+		
 	}
 }
 

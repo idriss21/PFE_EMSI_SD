@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="template1">
+<head>
+<title>Votre Banque</title>
+</head>
+<body>
+  <div layout:fragment="content">
+  
+  <div>
+  <form  th:action="@{/consulterOrdre}" method="get">
+  
+	  	<label> Société :</label>
+	  	<select   name="code">
+	  	 <option  th:each="ste:${listeSte}" th:value="${ste.code}" th:text="${ste.nom}" ></option>		
+	  	</select>
+	  	<button type="submit" name="btnSearch" class="btn btn-primary">Ok</button> <br/>
+	  	
+	  	
+  </form>
+   <div class="text-danger" th:if="${exception}" th:text="${exception.message}"></div>
+  </div>
+  
+  
+  <div class="panel panel-primary" th:if="${societe}">
+          <div class="panel-heading">Informations sur la societe</div>
+          <div class="panel-body">
+            <table class="table table-striped" >
+             <tr>
+              <th>Type</th><th>Nombre Action</th><th>Qte</th><th>Date</th>
+             </tr>
+             <tr th:each="o:${listeOrdre}">
+              	<td th:text="${o.class.simpleName}"></td>
+              	<td th:text="${o.nombreAction}"></td>
+              	<td th:text="${o.quantite}"></td>
+              	<td th:text="${o.dateOrdre}"></td>
+             </tr>	
+            </table>
+        </div>
+  
+  <div>
+  
+  
+  
+  
+  </div>
+  
+  </div>
+  
+  </div>
+ </body>
+ </html>
